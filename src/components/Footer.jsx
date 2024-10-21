@@ -6,7 +6,7 @@ function Footer() {
   return (
    
 
-    <div className='w-full bg-black p-8'>
+    <div className='w-full bg-black text-white p-8'>
          <div className='flex w-full  items-center  lg:flex-row md:justify-around  lg:items-center mx-auto  flex-col  gap-4 '>
     {/* 1 */}
 <div className='flex items-center flex-col  gap-4'>
@@ -35,14 +35,22 @@ function Footer() {
   </div>
   {/* 4 */}
         <div>
-            <p className='text-center text-darkgray text-2xl mb-4'> Follow us </p>
+            <p className='text-center text-darkgray text-2xl mb-4'>don't Follow us </p>
             <div className='flex flex-row items-center justify-between '>
-              <Link href={"https://www.facebook.com/?locale=fr_FR"}>
+              <Link href={"https://www.linkedin.com/in/youcef-ldn/"}>
               <Image src={"/LinkedIn.svg"} height={60} width={60} alt="Linkedin" />
 
               </Link>
-            <Image src={"/Facebook.svg"} height={60} width={60} alt="facebook" />
-            <Image src={"/Insta.svg"} height={50}   width={50} alt="insta" />
+              <Link href={"https://web.facebook.com/profile.php?id=61558745182612"}>
+              <Image src={"/Facebook.svg"} height={60} width={60} alt="facebook" />
+
+              </Link>
+              <Link href={"https://www.instagram.com/sirius.estin/"}>
+              <Image src={"/Insta.svg"} height={50}   width={50} alt="insta" />
+
+              </Link>
+           
+           
 
 
 

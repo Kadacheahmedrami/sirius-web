@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 
+
 const Game = ({ keyParam, value }) => {
   const [isMobile, setIsMobile] = useState(false);
+
 
   // Check for screen width to determine if it's mobile resolution
   useEffect(() => {
@@ -24,13 +26,19 @@ const Game = ({ keyParam, value }) => {
       : "z-0 flex-col-reverse cursor-default w-[100%] h-[265px] md:h-auto md:w-full bg-gray-300 border-4 rounded flex items-center justify-center opacity-70";
   };
 
-  // Define the href conditionally
-  const getHref = () => {
-    return value === 0 ? "/game" : "#";
+  
+
+  // Handle click event to navigate to /game and pass keyParam
+  const handleClick = (e) => {
+    if (value !== 0) {
+      e.preventDefault();
+    } else {
+      router.push(`/game?keyParam=${keyParam}`); // Navigate to /game with keyParam as a query parameter
+    }
   };
 
   return (
-    <a draggable='false' href={getHref()} onClick={value !== 0 ? (e) => e.preventDefault() : undefined}>
+    <a draggable='false' href={value === 0 ? `/game?keyParam=${keyParam}` : "#"} onClick={handleClick}>
       <div id="start" className={getClassName()}>
         <div className="play"
           style={{ 
@@ -43,12 +51,12 @@ const Game = ({ keyParam, value }) => {
 
         {/* Conditional rendering: Show image on mobile, Spline Viewer on larger screens */}
         {isMobile ? (
-        <Image
-        alt="Sirius"
-        src={'/sirius.png'}
-        height={50}
-        width={325}
-        ></Image>
+          <Image
+            alt="Sirius"
+            src={'/sirius.png'}
+            height={50}
+            width={325}
+          />
         ) : (
           <spline-viewer
             url="https://prod.spline.design/8iXD8T1UPl8mwj9i/scene.splinecode"

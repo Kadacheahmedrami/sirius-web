@@ -3,7 +3,9 @@ import { useState ,useEffect } from 'react';
 import Image from "next/image";
 import QuizItem from "../../components/QuizItem";
 import Script from "next/script";
-import NavBar from '../../components/NavBar';
+
+
+
 export default function Home() {
   // const [clerkId, setClerkId] = useState(null); // Use state to store clerkId
   // const [items, setItems] = useState([]); // Use state to store items
@@ -14,6 +16,53 @@ export default function Home() {
   //   return <div>Loading...</div>;  // Optionally, show a loading message
   // }
 
+  const [keyParam, setKeyParam] = useState('');
+  const [i, setI] = useState(null); // Initialize 'i' with a null value
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const keyParamValue = queryParams.get('keyParam');
+    console.log(keyParamValue)
+    if (keyParamValue) {
+      setKeyParam('key ======',keyParamValue); // Set keyParam state
+
+      // Determine the value of 'i' based on keyParam
+      let newI = null;
+      switch (keyParamValue) {
+        case 'someKey1':
+      
+          newI = 0;
+          break;
+        case 'someKey2':
+    
+          newI = 1;
+          break;
+       
+        case 'someKey3':
+          newI = 2;
+          break;
+          case 'someKey4':
+            newI = 3;
+            break;
+            case 'someKey5':
+                newI = 4;
+                break;
+
+                case 'someKey6':
+                    newI = 5;
+                    break;
+        default:
+          newI = -1; // Default value for any other key
+      }
+
+      setI(newI);
+      setLoading(false); // Set loading to false after determining 'i'
+    } else {
+      setLoading(false); // Set loading to false if no keyParam
+    }
+  }, []);
+
   const [step, setStep] = useState(1); // Track the current step
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Track the selected answer
   const [isCorrect, setIsCorrect] = useState(false); // Check if the answer is correct
@@ -21,7 +70,11 @@ export default function Home() {
   const [select , setSelect] = useState(false);
 
   const Hints = ['First', 'Second' ,'Third']; 
-  const [data , setData] = useState(false);
+   const [data , setData] = useState(false);
+
+
+
+
 
 
 
@@ -37,7 +90,7 @@ export default function Home() {
         ]
       },
       2: {
-        question: "What is the world’s first computer virus called?",
+        question: "What is the world's first computer virus called?",
         answers: [
           { id: 1, text: "Creeper", isCorrect: true },
           { id: 2, text: "ILOVEYOU", isCorrect: false },
@@ -112,11 +165,107 @@ export default function Home() {
           { id: 4, text: "Random Allocation Memory", isCorrect: false }
         ]
       }
-    }
+    },
+    {
+        1: {
+          question: "Which wireless technology is commonly used for short-range communication in IoT devices and wearable tech?",
+          answers: [
+            { id: 1, text: "Wi-Fi", isCorrect: false },
+            { id: 2, text: "Bluetooth", isCorrect: true },
+            { id: 3, text: "NFC", isCorrect: false },
+            { id: 4, text: "Zigbee", isCorrect: false }
+          ],
+          hint: "BROKEN FOR YEARS"
+        },
+        2: {
+          question: "What famous water fountain in Italy is known for its tradition of tossing coins?",
+          answers: [
+            { id: 1, text: "Fountain of Youth", isCorrect: false },
+            { id: 2, text: "Trevi Fountain", isCorrect: true },
+            { id: 3, text: "Bellagio Fountain", isCorrect: false },
+            { id: 4, text: "Buckingham Fountain", isCorrect: false }
+          ],
+          hint: "9bel maykoun 3ndna foyer we existed b un distribiteur fachel."
+        },
+        3: {
+          question: "What type of network is typically used in smart vending machines to report inventory status in real-time?",
+          answers: [
+            { id: 1, text: "Wi-Fi Network", isCorrect: false },
+            { id: 2, text: "Cellular Network", isCorrect: true },
+            { id: 3, text: "LAN (Local Area Network)", isCorrect: false },
+            { id: 4, text: "Satellite Network", isCorrect: false }
+          ],
+          hint: "the non-working vending machine .just like your RIZZ"
+        }
+      },
+      {
+        1: {
+          question: "What online security measure keeps your data safe like a lock on a treasure chest?",
+          answers: [
+            { id: 1, text: "VPN", isCorrect: false },
+            { id: 2, text: "Firewall", isCorrect: false },
+            { id: 3, text: "TLS", isCorrect: true },
+            { id: 4, text: "Antivirus", isCorrect: false }
+          ],
+          hint: "RAHI 3ND BNADEM THIS TIME CEO OF DRACARYSMODES"
+        },
+        2: {
+          question: "What animal can change its color to blend in with its surroundings?",
+          answers: [
+            { id: 1, text: "Chameleon", isCorrect: true },
+            { id: 2, text: "Octopus", isCorrect: false },
+            { id: 3, text: "Parrot", isCorrect: false },
+            { id: 4, text: "Gecko", isCorrect: false }
+          ],
+          hint: "شيكور الدنيا This person is a famous 2CP student G0X (been in 2cp for two years now)"
+        },
+        3: {
+          question: "What do we call those annoying emails that flood our inbox with fake offers?",
+          answers: [
+            { id: 1, text: "Treats", isCorrect: false },
+            { id: 2, text: "Spam", isCorrect: true },
+            { id: 3, text: "Newsletters", isCorrect: false },
+            { id: 4, text: "Updates", isCorrect: false }
+          ],
+          hint: "FIND THE GMAIL SPAMMER AND TELL HIM قبضة البعبع"
+        }
+      },
+      {
+        1: {
+          question: "Which data structure uses LIFO (Last In, First Out) principle?",
+          answers: [
+            { id: 1, text: "Queue", isCorrect: false },
+            { id: 2, text: "Stack", isCorrect: true },
+            { id: 3, text: "Array", isCorrect: false },
+            { id: 4, text: "Linked List", isCorrect: false }
+          ],
+          hint: "Water flows just like data there"
+        },
+        2: {
+          question: "What does IoT stand for, a technology that connects everyday objects to the internet?",
+          answers: [
+            { id: 1, text: "Internet of Things", isCorrect: true },
+            { id: 2, text: "Internet of Tools", isCorrect: false },
+            { id: 3, text: "Interconnected Online Technology", isCorrect: false },
+            { id: 4, text: "Internet of Technology", isCorrect: false }
+          ],
+          hint: "unnecessary part fl campus vraiment useless , لخرة وصاي"
+        },
+        3: {
+          question: "What programming language was named after a type of coffee?",
+          answers: [
+            { id: 1, text: "Java", isCorrect: true },
+            { id: 2, text: "C++", isCorrect: false },
+            { id: 3, text: "Python", isCorrect: false },
+            { id: 4, text: "Ruby", isCorrect: false }
+          ],
+          hint: "Now head to the fountain between amphie1 and amphie5."
+        }
+      }
   ];
   
     const revealHint = [
-      {
+       {
         0:  "   صحاااا شلواح فخورة : KEEP THIS NUMBER YOU ARE GONNA NEED IT",
         1:  "    win les absences ytmarkaw 😬😬😬",
         2:  "     AT Salle TD numero =  the number of the first quiz !"
@@ -151,9 +300,17 @@ export default function Home() {
     ]
 
 
-  let i=1
-  const quizData = quizes[i]
-  const hinttext = revealHint[i]
+    let quizData
+    let hinttext 
+
+    if (loading) {
+        return <div>Loading...</div>;
+      }
+ 
+       quizData = quizes[i]
+       hinttext = revealHint[i]
+
+
   // useEffect(() => {
   //   if (isLoaded && isSignedIn) {
   //     setClerkId(user.id); // Use user.id to get the Clerk ID
@@ -164,8 +321,8 @@ export default function Home() {
   // }, [isLoaded, isSignedIn, user]);
 
 
-
-
+ 
+ 
   const updateItems = async (clkId, updatedItems) => {
     try {
       const response = await fetch('/api/updateItems', {
@@ -189,28 +346,28 @@ export default function Home() {
       console.error('Error sending PUT request:', error);
     }
   };
+ 
 
 
 
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch('http://localhost:3000/api/data');
+//         if (!response.ok) {
+//           throw new Error('Failed to fetch data');
+//         }
+//         const result = await response.json();
+//         setData(result.data); // Accessing the 'data' field from your API response
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:3000/api/data');
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch data');
-  //       }
-  //       const result = await response.json();
-  //       setData(result.data); // Accessing the 'data' field from your API response
-  //     } catch (err) {
-  //       setError(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+//     fetchData();
+//   }, []);
 
   
 
@@ -236,7 +393,7 @@ export default function Home() {
 
   const show = ()=>{
     if (isCorrect) {
-      setSelect(false)
+       setSelect(false)
       setShowHint(true); // Show the hint pop-up
     }
     else {
@@ -269,7 +426,7 @@ export default function Home() {
   src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js" 
   strategy="afterInteractive" // This loads the script after the page becomes interactive
 />
-<NavBar/>
+
 
 <div className='hidden md:block absolute bottom-[20%] w-[200%] h-[820px] translate-y-[25%] translate-x-[15%] overflow-hidden z-[-1] min-h-screen md:z-[1] opacity-20 md:opacity-100'>
 <spline-viewer url="https://prod.spline.design/jHlH12SKOpUm3lVo/scene.splinecode"></spline-viewer>
@@ -280,7 +437,7 @@ export default function Home() {
       {showHint && (
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
       )}
-          
+           
 
       <div className={`flex flex-col w-[100%] lg:w-[60%] mt-10   ${showHint ? 'blur-sm' : ''}`}>
 
@@ -344,7 +501,7 @@ SEND THE REQUEST            </button> */}
               {Hints[step-1]} Hint <Image src={'lamp.svg'} width={30} height={30}></Image>
               </div>
             <p className='text-white w-[90%] text-center text-[50px]'>
-            { hinttext[step-1] }
+             { hinttext[step-1] }
               </p>
             <div className="flex  w-[90%] justify-end mt-4">
               <button
