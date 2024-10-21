@@ -3,8 +3,7 @@ import { useState ,useEffect } from 'react';
 import Image from "next/image";
 import QuizItem from "../../components/QuizItem";
 import Script from "next/script";
-import NavBar from '@/components/Navbar';
-
+import NavBar from '../../components/NavBar';
 export default function Home() {
   // const [clerkId, setClerkId] = useState(null); // Use state to store clerkId
   // const [items, setItems] = useState([]); // Use state to store items
