@@ -498,7 +498,7 @@ SEND THE REQUEST            </button> */}
         >
           <div className="bg-[#AB0ABD] h-[480px] p-6 rounded-[48px] shadow-lg md:w-[40%] flex flex-col justify-center items-center gap-[15px]">
             <div className="text-white text-[30px] font-bold p-[10px] px-[20px] border-[#00E0FF] border-[2px]  rounded-[30px] justify-center items-center flex flex-row gap-[10px]">
-              {Hints[step-1]} Hint <Image src={'lamp.svg'} width={30} height={30}></Image>
+              {Hints[step-1]} Hint  <Image src={'lamp.svg'} width={30} height={30} alt='lamp' />
               </div>
             <p className='text-white w-[90%] text-center text-[50px]'>
              { hinttext[step-1] }

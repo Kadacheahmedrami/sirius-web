@@ -35,7 +35,7 @@ function Footer() {
   </div>
   {/* 4 */}
         <div>
-            <p className='text-center text-darkgray text-2xl mb-4'>don't Follow us </p>
+            <p className='text-center text-darkgray text-2xl mb-4'>dont Follow us </p>
             <div className='flex flex-row items-center justify-between '>
               <Link href={"https://www.linkedin.com/in/youcef-ldn/"}>
               <Image src={"/LinkedIn.svg"} height={60} width={60} alt="Linkedin" />

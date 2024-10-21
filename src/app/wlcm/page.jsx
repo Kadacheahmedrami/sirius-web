@@ -73,7 +73,7 @@ export default function Home() {
         <Image className="ml-[1000px] md:block absolute md:ml-[-20%] lg:ml-[-15%] rotate-[230deg] scale-x-[-1] foot-animation" src={'/bluefoot.svg'} width={30} height={30} alt="Blue Foot 3" />
         <Image className="ml-[1000px] md:block absolute md:ml-[-15%] mb-[-15%] lg:mb-[-10%] rotate-[230deg] scale-x-[-1] foot-animation" src={'/bluefoot.svg'} width={30} height={30} alt="Blue Foot 4" />
         <div className="text-[32px] md:text-[40px] font-[700] text-[#ffffff] leading-[56.88px] flex flex-row absolute gap-3">
-          About  <Image src={'SIRIUS.svg'} height={150} width={130}></Image>
+          About  <Image alt="sirius" src={'SIRIUS.svg'} height={150} width={130} />
         </div>
         <Image alt="Left" src={'/left.svg'}  className='ml-auto' width={600} height={300} />
       </div>
