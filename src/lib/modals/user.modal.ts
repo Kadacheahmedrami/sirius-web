@@ -1,4 +1,5 @@
 import { Schema, model, models } from "mongoose";
+import { Arapey } from "next/font/google";
 
 const UserSchema = new Schema({
   clerkId: {
@@ -25,6 +26,17 @@ const UserSchema = new Schema({
   lastName: {
     type: String,
   },
+  
+    items: {
+      type : Array ,
+      default : [0,0,0,0,0,0]
+    }
+  ,  
+   foundImage: {
+    type : String ,
+    default : ""
+  }
+  
 });
 
 const User = models?.User || model("User", UserSchema);
