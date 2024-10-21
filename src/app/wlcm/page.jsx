@@ -7,7 +7,9 @@ import MyForm from '../../components/MyForm';
 import WelcomeGame from "../../components/WelcomeGame";
 import Game from "../../components/Game";
 import Script from "next/script";
-import NavBar from "../../components/NavBar"
+import NavBar from '@/components/Navbar';
+
+// import NavBar from "../../components/NavBar"
 
 
 
