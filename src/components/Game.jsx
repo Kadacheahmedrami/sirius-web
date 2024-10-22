@@ -1,5 +1,5 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 
@@ -14,10 +14,30 @@ const Game = ({ keyParam, value }) => {
     };
 
     handleResize(); // Check on component mount
-    window.addEventListener('resize', handleResize); // Listen for window resize
+    window.addEventListener("resize", handleResize); // Listen for window resize
 
-    return () => window.removeEventListener('resize', handleResize); // Cleanup
+    return () => window.removeEventListener("resize", handleResize); // Cleanup
   }, []);
+
+  // Get the card number based on the keyParam
+  const getCardNumber = () => {
+    switch (keyParam) {
+      case "someKey1":
+        return "Find card 1";
+      case "someKey2":
+        return "Find card 2";
+      case "someKey3":
+        return "Find card 3";
+      case "someKey4":
+        return "Find card 4";
+      case "someKey5":
+        return "Find card 5";
+      case "someKey6":
+        return "Find card 6";
+      default:
+        return "Play";
+    }
+  };
 
   // Define styles based on the value
   const getClassName = () => {
@@ -25,8 +45,6 @@ const Game = ({ keyParam, value }) => {
       ? "spline-card z-0 flex-col-reverse w-[100%] h-[265px] md:h-auto md:w-full bg-white border-4 rounded flex items-center justify-center transition duration-300"
       : "z-0 flex-col-reverse cursor-default w-[100%] h-[265px] md:h-auto md:w-full bg-gray-300 border-4 rounded flex items-center justify-center opacity-70";
   };
-
-  
 
   // Handle click event to navigate to /game and pass keyParam
   const handleClick = (e) => {
@@ -38,25 +56,21 @@ const Game = ({ keyParam, value }) => {
   };
 
   return (
-    <a draggable='false' href={value === 0 ? `/game?keyParam=${keyParam}` : "#"} onClick={handleClick}>
+    <a draggable="false" href={value === 0 ? `/game?keyParam=${keyParam}` : "#"} onClick={handleClick}>
       <div id="start" className={getClassName()}>
-        <div className="play"
-          style={{ 
+        <div
+          className="play"
+          style={{
             textDecoration: value !== 0 ? "line-through" : "none",
-            fontWeight: value !== 0 ? "normal" : "bold"
+            fontWeight: value !== 0 ? "normal" : "bold",
           }}
         >
-          {value === 0 ? "Play" : "Closed"}
+          {value === 0 ? getCardNumber() : "Closed"}
         </div>
 
         {/* Conditional rendering: Show image on mobile, Spline Viewer on larger screens */}
         {isMobile ? (
-          <Image
-            alt="Sirius"
-            src={'/sirius.png'}
-            height={50}
-            width={325}
-          />
+          <Image alt="Sirius" src={"/sirius.png"} height={50} width={325} />
         ) : (
           <spline-viewer
             url="https://prod.spline.design/8iXD8T1UPl8mwj9i/scene.splinecode"

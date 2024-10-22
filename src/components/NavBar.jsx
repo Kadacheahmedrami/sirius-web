@@ -21,11 +21,7 @@ function NavBar() {
      <a href="#game"><button  className="button">  I found item</button></a>  
       </div>
     </ul>
-    <div className="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+   
   </nav>
   )
 }
